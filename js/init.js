@@ -74,7 +74,7 @@ var iUser={};
 		if (720 == so && 780 == wo) return 'Pacific/Auckland';
 		if (765 == so && 825 == wo) return 'Pacific/Chatham';
 		if (780 == so && 780 == wo) return 'Pacific/Enderbury'
-			if (840 == so && 840 == wo) return 'Pacific/Kiritimati';
+		if (840 == so && 840 == wo) return 'Pacific/Kiritimati';
 		return 'US/Pacific';
 	}
 	var url= "http://ipinfo.io/json";
@@ -83,7 +83,7 @@ var iUser={};
 	request.onload=function(){
 		if(request.status===200){
 			iUser["country"]=JSON.parse(request.responseText)["country"];
-			console.log(iUser);
+			console.log(window.iUser);
 		}
 	};
 	request.send(null);
