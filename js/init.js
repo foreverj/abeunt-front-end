@@ -79,7 +79,7 @@ var iUser={};
 	}
 	var url= "http://ipinfo.io/json";
 	var request=new XMLHttpRequest();
-	request.open("GET",url);
+	request.open("GET",url,false);
 	request.onload=function(){
 		if(request.status===200){
 			iUser["country"]=JSON.parse(request.responseText)["country"];
@@ -96,13 +96,21 @@ var iUser={};
 			loadScript("http://cdn.bootcss.com/require.js/2.1.15/require.min.js")
 		}else{
 			loadScript("http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js")
+			loadGA();
 		}
+	}
+	function loadGA(){
+		var s=document.createElement("script");
+		s.type="text/javascript";
+		s.src="dist/js/ga.js";
+		var body=document.getElementById("body");
+		document.head.appendChild(s);
 	}
 	function loadScript(url){
 		var script = document.createElement("script");
 		script.type="text/javascript";
 		z = document.createAttribute('data-main');
-		z.value = 'js/main.js';
+		z.value = 'dist/js/main.js';
 		script.setAttributeNode(z)
 		script.src=url;
 		document.head.appendChild(script);

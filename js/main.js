@@ -1,7 +1,7 @@
 require.config({
     baseUrl: 'js/lib',
     paths: {
-        jquery: loadJquey(iUser)
+        angular: loadAngular(iUser)
     }
 });
 function loadJquey(paramater){
@@ -11,6 +11,13 @@ function loadJquey(paramater){
 		return "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min";
 	}
 }
-require(["jquery"],function($){
-	$("h1").text("Jquery");
+function loadAngular(paramater){
+	if(paramater.country==="CN"){
+		return "http://cdn.bootcss.com/angular.js/1.3.0/angular.min";
+	}else{
+		return "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min";
+	}
+}
+define(["angular"],function(angular){
+	require('angular');
 });
