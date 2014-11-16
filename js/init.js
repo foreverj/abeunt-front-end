@@ -84,9 +84,27 @@ var iUser={};
 		if(request.status===200){
 			iUser["country"]=JSON.parse(request.responseText)["country"];
 			console.log(window.iUser);
+			loadJS(iUser);
 		}
 	};
 	request.send(null);
 	iUser["language"]=language;
 	iUser["timeZone"]=getTimezoneName();
+
+	function loadJS(paramater){
+		if(paramater.country=="CN"){
+			loadScript("http://cdn.bootcss.com/require.js/2.1.15/require.min.js")
+		}else{
+			loadScript("http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js")
+		}
+	}
+	function loadScript(url){
+		var script = document.createElement("script");
+		script.type="text/javascript";
+		z = document.createAttribute('data-main');
+		z.value = 'js/main.js';
+		script.setAttributeNode(z)
+		script.src=url;
+		document.head.appendChild(script);
+	}
 })();
